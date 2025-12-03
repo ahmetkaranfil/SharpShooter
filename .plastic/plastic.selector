@@ -1,0 +1,4 @@
+repository "SharpShooter/SharpShooter@18967932067758@cloud"
+  path "/"
+    br "/main"
+    co "/main"
