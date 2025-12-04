@@ -3,6 +3,7 @@ using StarterAssets;
 
 public class Silah : MonoBehaviour
 {
+    [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] int damageAmount = 1;
     StarterAssetsInputs starterAssetsInputs; 
     
@@ -19,6 +20,8 @@ public class Silah : MonoBehaviour
     void HandleShoot()
     {
         if (!starterAssetsInputs.shoot) return;
+
+        muzzleFlash.Play();
 
         RaycastHit hit;
 
