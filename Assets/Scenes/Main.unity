@@ -921,6 +921,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 941406415}
+  - component: {fileID: 941406416}
   m_Layer: 3
   m_Name: Pistol
   m_TagString: Untagged
@@ -944,6 +945,18 @@ Transform:
   - {fileID: 1420615328}
   m_Father: {fileID: 469028521}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -1.5}
+--- !u!114 &941406416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941406414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d3e6d9a1a615f4bb32c71b3d8d9d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1154844086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,6 +1669,7 @@ GameObject:
   - component: {fileID: 1766243387}
   - component: {fileID: 1766243386}
   - component: {fileID: 1766243385}
+  - component: {fileID: 1766243388}
   m_Layer: 6
   m_Name: "D\xFC\u015Fman"
   m_TagString: Untagged
@@ -1689,7 +1703,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1713,6 +1727,29 @@ Transform:
   - {fileID: 2098849319}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1766243388
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766243384}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1923275323
 GameObject:
   m_ObjectHideFlags: 0
