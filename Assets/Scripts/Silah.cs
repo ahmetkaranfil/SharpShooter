@@ -3,6 +3,7 @@ using StarterAssets;
 
 public class Silah : MonoBehaviour
 {
+    [SerializeField] int damageAmount = 1;
     StarterAssetsInputs starterAssetsInputs; 
     
     void Awake()
@@ -10,18 +11,25 @@ public class Silah : MonoBehaviour
         starterAssetsInputs = GetComponentInParent<StarterAssetsInputs>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(starterAssetsInputs.shoot)
-        {
-            RaycastHit hit;
+        HandleShoot();
+    }
 
-            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity))
+    void HandleShoot()
+    {
+        if (!starterAssetsInputs.shoot) return;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity))
+        {
+            DüşmanSağlığı enemyHealth = hit.collider.GetComponent<DüşmanSağlığı>();
+            if (enemyHealth)
             {
-                Debug.Log(hit.collider.name);
-                starterAssetsInputs.ShootInput(false);
-            }   
+                enemyHealth.TakeDamage(damageAmount);
+            }
+            starterAssetsInputs.ShootInput(false);
         }
     }
 }
