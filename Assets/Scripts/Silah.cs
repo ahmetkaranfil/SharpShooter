@@ -1,8 +1,10 @@
 using UnityEngine;
 using StarterAssets;
+using Unity.Mathematics;
 
 public class Silah : MonoBehaviour
 {
+    [SerializeField] GameObject HitVFXPrefab;
     [SerializeField] Animator animator;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] int damageAmount = 1;
@@ -33,6 +35,7 @@ public class Silah : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity))
         {
+            Instantiate(HitVFXPrefab, hit.point, quaternion.identity);
             DüşmanSağlığı enemyHealth = hit.collider.GetComponent<DüşmanSağlığı>();
             if (enemyHealth)
             {
