@@ -3,9 +3,13 @@ using StarterAssets;
 
 public class Silah : MonoBehaviour
 {
+    [SerializeField] Animator animator;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] int damageAmount = 1;
+
     StarterAssetsInputs starterAssetsInputs; 
+
+    const string Shoot_String = "Shoot";
     
     void Awake()
     {
@@ -22,6 +26,8 @@ public class Silah : MonoBehaviour
         if (!starterAssetsInputs.shoot) return;
 
         muzzleFlash.Play();
+        animator.Play(Shoot_String, 0, 0f);
+        starterAssetsInputs.ShootInput(false);
 
         RaycastHit hit;
 
@@ -32,7 +38,6 @@ public class Silah : MonoBehaviour
             {
                 enemyHealth.TakeDamage(damageAmount);
             }
-            starterAssetsInputs.ShootInput(false);
         }
     }
 }
