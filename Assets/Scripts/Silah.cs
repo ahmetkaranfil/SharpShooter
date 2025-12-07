@@ -4,10 +4,10 @@ using Unity.Mathematics;
 
 public class Silah : MonoBehaviour
 {
+    [SerializeField] SilahSO silahSO;
     [SerializeField] GameObject HitVFXPrefab;
     [SerializeField] Animator animator;
     [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] int damageAmount = 1;
 
     StarterAssetsInputs starterAssetsInputs; 
 
@@ -39,7 +39,7 @@ public class Silah : MonoBehaviour
             DüşmanSağlığı enemyHealth = hit.collider.GetComponent<DüşmanSağlığı>();
             if (enemyHealth)
             {
-                enemyHealth.TakeDamage(damageAmount);
+                enemyHealth.TakeDamage(silahSO.Damage);
             }
         }
     }
