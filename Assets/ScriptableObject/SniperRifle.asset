@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: SniperRifle
   m_EditorClassIdentifier: 
   Damage: 5
-  fireRate: 1
+  FireRate: 1
+  HitVFXPrefab: {fileID: 273195101130487537, guid: 6380f7f0f8007484f96b3cd81e39667d, type: 3}
+  IsAutomatic: 0
