@@ -5,5 +5,6 @@ using UnityEngine;
 public class SilahSO : ScriptableObject
 {
     public int Damage = 1;
-    public float fireRate = 0.5f;
+    public float FireRate = 0.5f;
+    public GameObject HitVFXPrefab;
 }

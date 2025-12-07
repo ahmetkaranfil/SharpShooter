@@ -1,41 +1,17 @@
 using UnityEngine;
-using StarterAssets;
-using Unity.Mathematics;
 
 public class Silah : MonoBehaviour
 {
-    [SerializeField] SilahSO silahSO;
-    [SerializeField] GameObject HitVFXPrefab;
-    [SerializeField] Animator animator;
     [SerializeField] ParticleSystem muzzleFlash;
 
-    StarterAssetsInputs starterAssetsInputs; 
-
-    const string Shoot_String = "Shoot";
-    
-    void Awake()
+    public void Shoot(SilahSO silahSO)
     {
-        starterAssetsInputs = GetComponentInParent<StarterAssetsInputs>();
-    }
-
-    void Update()
-    {
-        HandleShoot();
-    }
-
-    void HandleShoot()
-    {
-        if (!starterAssetsInputs.shoot) return;
-
-        muzzleFlash.Play();
-        animator.Play(Shoot_String, 0, 0f);
-        starterAssetsInputs.ShootInput(false);
-
         RaycastHit hit;
+        muzzleFlash.Play();
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity))
         {
-            Instantiate(HitVFXPrefab, hit.point, quaternion.identity);
+            Instantiate(silahSO.HitVFXPrefab, hit.point, Quaternion.identity);
             DüşmanSağlığı enemyHealth = hit.collider.GetComponent<DüşmanSağlığı>();
             if (enemyHealth)
             {
