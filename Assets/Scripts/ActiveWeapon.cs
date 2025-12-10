@@ -33,6 +33,15 @@ public class ActiveWeapon : MonoBehaviour
     public void SwitchWeapon(SilahSO silahSO)
     {
         Debug.Log("Oyuncu şunu elde etti: " + silahSO.name);
+
+        if(currentWeapon)
+        {
+            Destroy(currentWeapon.gameObject);
+        }
+
+        Silah newSilah = Instantiate(silahSO.silahPrefab, transform).GetComponent<Silah>();
+        currentWeapon = newSilah;
+        this.silahSO = silahSO;
     }
 
     void HandleShoot()
