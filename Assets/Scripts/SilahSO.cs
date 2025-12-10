@@ -9,4 +9,5 @@ public class SilahSO : ScriptableObject
     public float FireRate = 0.5f;
     public GameObject HitVFXPrefab;
     public bool IsAutomatic = false;
+    public bool CanZoom = false;
 }
