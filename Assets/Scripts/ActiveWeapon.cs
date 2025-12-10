@@ -30,6 +30,11 @@ public class ActiveWeapon : MonoBehaviour
         HandleShoot();
     }
 
+    public void SwitchWeapon(SilahSO silahSO)
+    {
+        Debug.Log("Oyuncu şunu elde etti: " + silahSO.name);
+    }
+
     void HandleShoot()
     {
         if (!starterAssetsInputs.shoot) return;
