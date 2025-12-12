@@ -10,4 +10,6 @@ public class SilahSO : ScriptableObject
     public GameObject HitVFXPrefab;
     public bool IsAutomatic = false;
     public bool CanZoom = false;
+    public float ZoomAmount = 15f;
+    public float ZoomRotationSpeed = 0.3f;
 }

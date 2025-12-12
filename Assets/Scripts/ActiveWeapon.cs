@@ -1,23 +1,32 @@
 using UnityEngine;
 using StarterAssets;
 using System;
+using Cinemachine;
 
 public class ActiveWeapon : MonoBehaviour
 {
     [SerializeField] SilahSO silahSO;
+    [SerializeField] CinemachineVirtualCamera playerFollowCamera;
+    [SerializeField] GameObject zoomVignette;
 
     Animator animator;
-    StarterAssetsInputs starterAssetsInputs; 
+    StarterAssetsInputs starterAssetsInputs;
+    FirstPersonController firstPersonController;
     Silah currentWeapon;
 
     const string Shoot_String = "Shoot";
 
     float timeSinceLastShot = 0f;
+    float defaultFOV;
+    float defaultRotationSpeed;
     
     void Awake()
     {
         starterAssetsInputs = GetComponentInParent<StarterAssetsInputs>();
+        firstPersonController = GetComponentInParent<FirstPersonController>();
         animator = GetComponent<Animator>();
+        defaultFOV = playerFollowCamera.m_Lens.FieldOfView;
+        defaultRotationSpeed = firstPersonController.RotationSpeed;
     }
 
     void Start()
@@ -70,10 +79,16 @@ public class ActiveWeapon : MonoBehaviour
         if(starterAssetsInputs.zoom)
         {
             Debug.Log("Zooming in");
+            zoomVignette.SetActive(true);
+            playerFollowCamera.m_Lens.FieldOfView = silahSO.ZoomAmount;
+            firstPersonController.ChangeRotationSpeed(silahSO.ZoomRotationSpeed);
         }
         else
         {
             Debug.Log("Not zooming in");
+            playerFollowCamera.m_Lens.FieldOfView = defaultFOV;
+            firstPersonController.ChangeRotationSpeed(defaultRotationSpeed);
+            zoomVignette.SetActive(false);
         }
     }
 }   

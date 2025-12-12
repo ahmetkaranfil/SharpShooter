@@ -55,6 +55,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
 #endif
+
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
@@ -85,6 +86,7 @@ namespace StarterAssets
 		{
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
+
 #if ENABLE_INPUT_SYSTEM
 			_playerInput = GetComponent<PlayerInput>();
 #else
@@ -106,6 +108,11 @@ namespace StarterAssets
 		private void LateUpdate()
 		{
 			CameraRotation();
+		}
+
+		public void ChangeRotationSpeed(float amount)
+		{
+			RotationSpeed = amount;
 		}
 
 		private void GroundedCheck()
