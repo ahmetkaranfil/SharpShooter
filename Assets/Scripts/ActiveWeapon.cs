@@ -8,6 +8,7 @@ public class ActiveWeapon : MonoBehaviour
 {
     [SerializeField] SilahSO startingSilahSO;
     [SerializeField] CinemachineVirtualCamera playerFollowCamera;
+    [SerializeField] Camera weaponCamera;
     [SerializeField] GameObject zoomVignette;
     [SerializeField] TMP_Text ammoText;
 
@@ -99,16 +100,19 @@ public class ActiveWeapon : MonoBehaviour
         if(starterAssetsInputs.zoom)
         {
             Debug.Log("Zooming in");
-            zoomVignette.SetActive(true);
             playerFollowCamera.m_Lens.FieldOfView = currentSilahSO.ZoomAmount;
+            weaponCamera.fieldOfView = currentSilahSO.ZoomAmount;
+            zoomVignette.SetActive(true);            
             firstPersonController.ChangeRotationSpeed(currentSilahSO.ZoomRotationSpeed);
+            
         }
         else
         {
             Debug.Log("Not zooming in");
             playerFollowCamera.m_Lens.FieldOfView = defaultFOV;
-            firstPersonController.ChangeRotationSpeed(defaultRotationSpeed);
+            weaponCamera.fieldOfView = defaultFOV;
             zoomVignette.SetActive(false);
+            firstPersonController.ChangeRotationSpeed(defaultRotationSpeed);
         }
     }
 }   
