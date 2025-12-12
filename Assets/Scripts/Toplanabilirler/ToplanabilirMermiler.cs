@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public class ToplanabilirMermiler : MonoBehaviour
+public class ToplanabilirMermiler : Toplanabilirler
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] int mermiSayisi = 100;
+    protected override void OnPickUp(ActiveWeapon activeWeapon)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        activeWeapon.AdjustAmmo(mermiSayisi);
     }
 }
