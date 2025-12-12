@@ -2,13 +2,16 @@ using UnityEngine;
 using StarterAssets;
 using System;
 using Cinemachine;
+using TMPro;
 
 public class ActiveWeapon : MonoBehaviour
 {
-    [SerializeField] SilahSO silahSO;
+    [SerializeField] SilahSO startingSilahSO;
     [SerializeField] CinemachineVirtualCamera playerFollowCamera;
     [SerializeField] GameObject zoomVignette;
+    [SerializeField] TMP_Text ammoText;
 
+    SilahSO currentSilahSO;
     Animator animator;
     StarterAssetsInputs starterAssetsInputs;
     FirstPersonController firstPersonController;
@@ -19,6 +22,7 @@ public class ActiveWeapon : MonoBehaviour
     float timeSinceLastShot = 0f;
     float defaultFOV;
     float defaultRotationSpeed;
+    int currentAmmo;
     
     void Awake()
     {
@@ -31,13 +35,26 @@ public class ActiveWeapon : MonoBehaviour
 
     void Start()
     {
-        currentWeapon = GetComponentInChildren<Silah>();
+        SwitchWeapon(startingSilahSO);
+        AdjustAmmo(currentSilahSO.MagazineSize);
     }
 
     void Update()
     {
         HandleShoot();
         HandleZoom();
+    }
+
+    public void AdjustAmmo(int amount)
+    {
+        currentAmmo += amount;
+
+        if(currentAmmo > currentSilahSO.MagazineSize)
+        {
+            currentAmmo = currentSilahSO.MagazineSize;
+        }
+
+        ammoText.text = currentAmmo.ToString("D2");
     }
 
     public void SwitchWeapon(SilahSO silahSO)
@@ -51,7 +68,9 @@ public class ActiveWeapon : MonoBehaviour
 
         Silah newSilah = Instantiate(silahSO.silahPrefab, transform).GetComponent<Silah>();
         currentWeapon = newSilah;
-        this.silahSO = silahSO;
+        this.currentSilahSO = silahSO;
+
+        AdjustAmmo(currentSilahSO.MagazineSize);
     }
 
     void HandleShoot()
@@ -60,14 +79,15 @@ public class ActiveWeapon : MonoBehaviour
         
         if (!starterAssetsInputs.shoot) return;
 
-        if (timeSinceLastShot >= silahSO.FireRate)
+        if (timeSinceLastShot >= currentSilahSO.FireRate && currentAmmo > 0)
         {
-            currentWeapon.Shoot(silahSO);
+            currentWeapon.Shoot(currentSilahSO);
             animator.Play(Shoot_String, 0, 0f);
             timeSinceLastShot = 0f;
+            AdjustAmmo(-1);
         }
 
-        if(!silahSO.IsAutomatic)
+        if(!currentSilahSO.IsAutomatic)
         {
             starterAssetsInputs.ShootInput(false);
         }
@@ -75,13 +95,13 @@ public class ActiveWeapon : MonoBehaviour
 
     void HandleZoom()
     {
-        if(!silahSO.CanZoom) return;
+        if(!currentSilahSO.CanZoom) return;
         if(starterAssetsInputs.zoom)
         {
             Debug.Log("Zooming in");
             zoomVignette.SetActive(true);
-            playerFollowCamera.m_Lens.FieldOfView = silahSO.ZoomAmount;
-            firstPersonController.ChangeRotationSpeed(silahSO.ZoomRotationSpeed);
+            playerFollowCamera.m_Lens.FieldOfView = currentSilahSO.ZoomAmount;
+            firstPersonController.ChangeRotationSpeed(currentSilahSO.ZoomRotationSpeed);
         }
         else
         {

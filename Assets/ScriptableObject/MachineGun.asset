@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   silahPrefab: {fileID: 6066451745157645967, guid: 8289439a764a6fb49b3a8dca986ce20b, type: 3}
   Damage: 1
-  FireRate: 0.25
+  FireRate: 0.1
   HitVFXPrefab: {fileID: 273195101130487537, guid: 6380f7f0f8007484f96b3cd81e39667d, type: 3}
   IsAutomatic: 1
+  CanZoom: 0
+  ZoomAmount: 15
+  ZoomRotationSpeed: 0.3
+  MagazineSize: 30

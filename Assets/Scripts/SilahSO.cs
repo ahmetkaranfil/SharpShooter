@@ -12,4 +12,5 @@ public class SilahSO : ScriptableObject
     public bool CanZoom = false;
     public float ZoomAmount = 15f;
     public float ZoomRotationSpeed = 0.3f;
+    public int MagazineSize = 12;
 }
