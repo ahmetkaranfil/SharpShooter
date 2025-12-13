@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
+  RobotExplosionVFX: {fileID: 1952752267768031578, guid: 43bbee2744cac2a4ea8d85c869219b06, type: 3}
 --- !u!136 &3158230362660143875
 CapsuleCollider:
   m_ObjectHideFlags: 0
