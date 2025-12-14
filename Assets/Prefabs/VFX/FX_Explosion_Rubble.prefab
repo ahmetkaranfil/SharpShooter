@@ -43,7 +43,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.2
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -116,8 +116,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5.5
-      minScalar: 4.5
+      scalar: 5
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4827,6 +4827,7 @@ GameObject:
   - component: {fileID: 7669467499955393607}
   - component: {fileID: 2917810698430178610}
   - component: {fileID: 7556452040760280296}
+  - component: {fileID: 773564262557754427}
   m_Layer: 0
   m_Name: FX_Explosion_Rubble
   m_TagString: Untagged
@@ -4859,7 +4860,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952752267768031578}
   serializedVersion: 8
-  lengthInSec: 0.1
+  lengthInSec: 0.05
   simulationSpeed: 1
   stopAction: 2
   cullingMode: 3
@@ -4874,7 +4875,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.05
+    scalar: 0.1
     minScalar: 0.1
     maxCurve:
       serializedVersion: 2
@@ -4934,7 +4935,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -9522,6 +9523,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &773564262557754427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952752267768031578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028ec4361c5a64f4a92e69101c03efc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1.5
 --- !u!1 &4235434354287563013
 GameObject:
   m_ObjectHideFlags: 0
@@ -9565,7 +9579,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}

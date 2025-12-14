@@ -18,8 +18,13 @@ public class DüşmanSağlığı : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            Instantiate(RobotExplosionVFX, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            SelfDestruct();
         }
+    }
+
+    public void SelfDestruct()
+    {
+        Instantiate(RobotExplosionVFX, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }
