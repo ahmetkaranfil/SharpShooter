@@ -11,7 +11,6 @@ public class Düşman : MonoBehaviour
 
     void Awake()
     {
-        if(!player) return;
         agent = GetComponent<NavMeshAgent>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,8 +22,8 @@ public class Düşman : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!player) return;
         agent.SetDestination(player.transform.position);
-
     }
 
     void OnTriggerEnter(Collider other)
