@@ -11,6 +11,7 @@ public class Düşman : MonoBehaviour
 
     void Awake()
     {
+        if(!player) return;
         agent = GetComponent<NavMeshAgent>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
