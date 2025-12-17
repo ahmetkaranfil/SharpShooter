@@ -2,15 +2,33 @@ using UnityEngine;
 
 public class OtomatikSilahMermisi : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] float speed = 15f;
+    [SerializeField] GameObject otomatikSilahMermisiVFX;
+    Rigidbody rb;
+
+    int damage;
+
+    void Awake()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        rb.linearVelocity = transform.forward * speed;
+    }
+
+    public void Init(int damage)
+    {
+        this.damage = damage;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        OyuncuSağlığı oyuncuSağlığı = other.GetComponent<OyuncuSağlığı>();
+        oyuncuSağlığı?.TakeDamage(damage);
+
+        Instantiate(otomatikSilahMermisiVFX, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }

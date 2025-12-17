@@ -9,6 +9,7 @@ public class OtomatikSilah : MonoBehaviour
     [SerializeField] Transform playerTargetPoint;
     
     [SerializeField] float fireRate = 2f;
+    [SerializeField] int damage = 2;
 
     OyuncuSağlığı oyuncu;
 
@@ -28,7 +29,10 @@ public class OtomatikSilah : MonoBehaviour
         while (oyuncu)
         {
             yield return new WaitForSeconds(fireRate); // Adjust fire rate as needed
-            Instantiate(turretBulletPrefab, turretBulletSpawnPoint.position, tarretHead.rotation);
+            
+            OtomatikSilahMermisi otomatikSilahMermisi = Instantiate(turretBulletPrefab, turretBulletSpawnPoint.position, Quaternion.identity).GetComponent<OtomatikSilahMermisi>();
+            otomatikSilahMermisi.transform.LookAt(playerTargetPoint);
+            otomatikSilahMermisi.Init(damage);
         }
     }
 }
