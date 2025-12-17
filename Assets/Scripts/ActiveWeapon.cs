@@ -60,7 +60,7 @@ public class ActiveWeapon : MonoBehaviour
 
     public void SwitchWeapon(SilahSO silahSO)
     {
-        Debug.Log("Oyuncu şunu elde etti: " + silahSO.name);
+        Debug.Log("Oyuncu şu silahı elde etti: " + silahSO.name);
 
         if(currentWeapon)
         {
@@ -99,7 +99,7 @@ public class ActiveWeapon : MonoBehaviour
         if(!currentSilahSO.CanZoom) return;
         if(starterAssetsInputs.zoom)
         {
-            Debug.Log("Zooming in");
+            Debug.Log("Zoom Yapildi.");
             playerFollowCamera.m_Lens.FieldOfView = currentSilahSO.ZoomAmount;
             weaponCamera.fieldOfView = currentSilahSO.ZoomAmount;
             zoomVignette.SetActive(true);            
@@ -108,7 +108,7 @@ public class ActiveWeapon : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not zooming in");
+            Debug.Log("Zoom Yapilamadi.");
             playerFollowCamera.m_Lens.FieldOfView = defaultFOV;
             weaponCamera.fieldOfView = defaultFOV;
             zoomVignette.SetActive(false);
