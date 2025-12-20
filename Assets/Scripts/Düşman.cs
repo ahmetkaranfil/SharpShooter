@@ -14,14 +14,13 @@ public class Düşman : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         player = FindFirstObjectByType<FirstPersonController>();
         gameManager = FindFirstObjectByType<GameManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!player) return;

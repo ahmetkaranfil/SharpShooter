@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using StarterAssets;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
         if (enemiesLeft <= 0)
         {
             winPanel.SetActive(true);
+            StarterAssetsInputs starterAssetsInputs = FindFirstObjectByType<StarterAssetsInputs>();
+            starterAssetsInputs.SetCursorState(false);
         }
     }
 
