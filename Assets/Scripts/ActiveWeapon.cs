@@ -60,7 +60,7 @@ public class ActiveWeapon : MonoBehaviour
 
     public void SwitchWeapon(SilahSO silahSO)
     {
-        Debug.Log("Oyuncu şu silahı elde etti: " + silahSO.name);
+        Debug.Log("Oyuncunun elinde ki silah: " + silahSO.name);
 
         if(currentWeapon)
         {

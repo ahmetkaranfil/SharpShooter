@@ -8,7 +8,7 @@ public class Düşman : MonoBehaviour
     NavMeshAgent agent;
     GameManager gameManager;
 
-    const string PLAYER_STRING = "Player";
+    const string PLAYER_STRING = "Oyuncu";
 
     void Awake()
     {
