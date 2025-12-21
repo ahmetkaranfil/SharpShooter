@@ -7,9 +7,17 @@ public class DüşmanSağlığı : MonoBehaviour
 
     int currentHealth;
 
+    GameManager gameManager;
+
     void Awake()
     {
         currentHealth = startingHealth;
+    }
+
+    void Start()
+    {
+        gameManager = FindFirstObjectByType<GameManager>();
+        gameManager.UpdateEnemiesLeft(1);
     }
 
     public void TakeDamage(int amount)
@@ -18,6 +26,7 @@ public class DüşmanSağlığı : MonoBehaviour
 
         if(currentHealth <= 0)
         {
+            gameManager.UpdateEnemiesLeft(-1);
             SelfDestruct();
         }
     }

@@ -6,6 +6,7 @@ public class Düşman : MonoBehaviour
 {
     FirstPersonController player;
     NavMeshAgent agent;
+    GameManager gameManager;
 
     const string PLAYER_STRING = "Oyuncu";
 
@@ -13,13 +14,13 @@ public class Düşman : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         player = FindFirstObjectByType<FirstPersonController>();
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!player) return;
@@ -31,6 +32,7 @@ public class Düşman : MonoBehaviour
         if(other.CompareTag(PLAYER_STRING))
         {
             DüşmanSağlığı düşmanSağlığı = GetComponent<DüşmanSağlığı>();
+            gameManager.UpdateEnemiesLeft(-1);
             düşmanSağlığı.SelfDestruct();
         }
     }

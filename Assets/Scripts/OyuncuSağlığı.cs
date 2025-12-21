@@ -1,4 +1,5 @@
 using Cinemachine;
+using StarterAssets;
 using UnityEngine;
 using UnityEngine.UI;
 public class OyuncuSağlığı : MonoBehaviour
@@ -8,6 +9,8 @@ public class OyuncuSağlığı : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera deathVirtualCamera;
     [SerializeField] Transform weaponCamera;
     [SerializeField] Image[] shieldBars;
+    [SerializeField] GameObject gameOverContainer;
+
 
     int currentHealth;
     int gameOverVirtualCameraPriority = 20;
@@ -26,11 +29,19 @@ public class OyuncuSağlığı : MonoBehaviour
         Debug.Log(amount + " hasar alındı");
 
         if(currentHealth <= 0)
-        {    
-            weaponCamera.parent = null;
-            deathVirtualCamera.Priority = gameOverVirtualCameraPriority;
-            Destroy(this.gameObject);
+        {
+            PlayerGameOver();
         }
+    }
+
+    void PlayerGameOver()
+    {
+        weaponCamera.parent = null;
+        deathVirtualCamera.Priority = gameOverVirtualCameraPriority;
+        gameOverContainer.SetActive(true);
+        StarterAssetsInputs starterAssetsInputs = FindFirstObjectByType<StarterAssetsInputs>();
+        starterAssetsInputs.SetCursorState(false);
+        Destroy(this.gameObject);
     }
 
     void AdjustShieldBar()
