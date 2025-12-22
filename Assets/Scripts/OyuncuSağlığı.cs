@@ -26,7 +26,7 @@ public class OyuncuSağlığı : MonoBehaviour
         currentHealth -= amount;
         AdjustShieldBar();
 
-        Debug.Log(amount + " hasar alındı");
+        Debug.Log(amount + " Kursun yendi.");
 
         if(currentHealth <= 0)
         {
