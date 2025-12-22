@@ -3,13 +3,13 @@ using System.Collections;
 
 public class OtomatikSilah : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Referanslar")]
     [SerializeField] Transform tarretHead;
     [SerializeField] GameObject turretBulletPrefab;
     [SerializeField] Transform turretBulletSpawnPoint;
     [SerializeField] Transform playerTargetPoint;
 
-    [Header("Settings")]
+    [Header("Ayarlar")]
     [SerializeField] float fireRate = 2f;
     [SerializeField] int damage = 1;
 
