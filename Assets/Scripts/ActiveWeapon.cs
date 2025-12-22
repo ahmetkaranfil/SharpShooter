@@ -6,7 +6,7 @@ using TMPro;
 
 public class ActiveWeapon : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Referanslar")]
     [SerializeField] private SilahSO startingSilahSO;
     [SerializeField] private CinemachineVirtualCamera playerFollowCamera;
     [SerializeField] private Camera weaponCamera;
