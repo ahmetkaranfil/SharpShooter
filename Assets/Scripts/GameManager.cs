@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void RestartButton()
     {
         int currentLevel = SceneManager.GetActiveScene().buildIndex;
