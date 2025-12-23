@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Toplanabilirler : MonoBehaviour
 {
-    [SerializeField] float rotationSpeed = 100f;
+    [SerializeField] float rotationSpeed = 95f;
     const string PLAYER_STRING = "Player";
 
     void Update()

@@ -3,15 +3,17 @@ using System.Collections;
 
 public class OtomatikSilah : MonoBehaviour
 {
+    [Header("Referanslar")]
     [SerializeField] Transform tarretHead;
     [SerializeField] GameObject turretBulletPrefab;
     [SerializeField] Transform turretBulletSpawnPoint;
     [SerializeField] Transform playerTargetPoint;
-    
-    [SerializeField] float fireRate = 2f;
-    [SerializeField] int damage = 2;
 
-    OyuncuSağlığı oyuncu;
+    [Header("Ayarlar")]
+    [SerializeField] float fireRate = 2f;
+    [SerializeField] int damage = 1;
+
+    private OyuncuSağlığı oyuncu;
 
     void Start()
     {
@@ -29,8 +31,14 @@ public class OtomatikSilah : MonoBehaviour
         while (oyuncu)
         {
             yield return new WaitForSeconds(fireRate); // Adjust fire rate as needed
-            
-            OtomatikSilahMermisi otomatikSilahMermisi = Instantiate(turretBulletPrefab, turretBulletSpawnPoint.position, Quaternion.identity).GetComponent<OtomatikSilahMermisi>();
+
+            OtomatikSilahMermisi otomatikSilahMermisi =
+                Instantiate(
+                    turretBulletPrefab,
+                    turretBulletSpawnPoint.position,
+                    Quaternion.identity
+                ).GetComponent<OtomatikSilahMermisi>();
+
             otomatikSilahMermisi.transform.LookAt(playerTargetPoint);
             otomatikSilahMermisi.Init(damage);
         }
