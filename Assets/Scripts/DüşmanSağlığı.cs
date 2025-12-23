@@ -5,7 +5,7 @@ public class DüşmanSağlığı : MonoBehaviour
     [SerializeField] int startingHealth = 3;
     [SerializeField] GameObject RobotExplosionVFX;
 
-    int currentHealth;
+    public int currentHealth;
 
     GameManager gameManager;
 

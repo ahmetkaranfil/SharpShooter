@@ -26,6 +26,7 @@ public class Silah : MonoBehaviour
             if (enemyHealth)
             {
                 enemyHealth.TakeDamage(silahSO.Damage);
+                Debug.Log("Enemy hit! Remaining Health: " + enemyHealth.currentHealth);
             }
         }
     }
